@@ -1,8 +1,78 @@
-console.log("Hello World");
+const buttons = document.querySelectorAll("input");
+let compScore = 0;
+let playerScore = 0;
 
 let compOptions = ["Rock", "Paper", "Scissors"];
-function getComputerChoice(x) {
+
+function getComputerChoice() {
   return compOptions[Math.floor(Math.random() * compOptions.length)];
 }
 
-console.log(getComputerChoice());
+function disableButton() {
+  buttons.forEach((elem) => {
+    elem.disabled = true;
+  });
+}
+
+let computerPlay = getComputerChoice();
+
+function playRound(playerSelection) {
+  let result = "";
+  let computerPlay = getComputerChoice();
+
+  if (
+    (playerSelection == "Rock" && computerPlay == "Scissors") ||
+    (playerSelection == "Paper" && computerPlay == "Rock") ||
+    (playerSelection == "Scissors" && computerPlay == "Paper")
+  ) {
+    playerScore += 1;
+
+    result =
+      "You win! " +
+      playerSelection +
+      " beats " +
+      computerPlay +
+      "   Player: " +
+      playerScore +
+      "    Computer: " +
+      compScore;
+
+    if (playerScore == 5) {
+      result += "      You won!";
+      disableButton();
+    }
+  } else if (playerSelection == computerPlay) {
+    result =
+      "Draw! You both chose " +
+      playerSelection +
+      "   Player: " +
+      playerScore +
+      "    Computer: " +
+      compScore;
+  } else {
+    compScore += 1;
+
+    result =
+      "You lose! " +
+      computerPlay +
+      " beats " +
+      playerSelection +
+      "   Player: " +
+      playerScore +
+      "    Computer: " +
+      compScore;
+
+    if (compScore == 5) {
+      result += "      You lost!";
+      disableButton();
+    }
+  }
+  document.getElementById("result").innerHTML = result;
+  return;
+}
+
+buttons.forEach((button) => {
+  button.addEventListener("click", function () {
+    playRound(button.value);
+  });
+});
