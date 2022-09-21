@@ -1,8 +1,12 @@
 const buttons = document.querySelectorAll("input");
+const main = document.querySelector("main");
 let compScore = 0;
 let playerScore = 0;
-
 let compOptions = ["Rock", "Paper", "Scissors"];
+
+function startAnimation() {
+  welcomePost.classList.add("drop-down");
+}
 
 function getComputerChoice() {
   return compOptions[Math.floor(Math.random() * compOptions.length)];
@@ -32,7 +36,7 @@ function playRound(playerSelection) {
       playerSelection +
       " beats " +
       computerPlay +
-      "   Player: " +
+      "  <br> Player: " +
       playerScore +
       "    Computer: " +
       compScore;
@@ -45,7 +49,7 @@ function playRound(playerSelection) {
     result =
       "Draw! You both chose " +
       playerSelection +
-      "   Player: " +
+      "  <br> Player: " +
       playerScore +
       "    Computer: " +
       compScore;
@@ -57,7 +61,7 @@ function playRound(playerSelection) {
       computerPlay +
       " beats " +
       playerSelection +
-      "   Player: " +
+      "  <br> Player: " +
       playerScore +
       "    Computer: " +
       compScore;

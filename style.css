@@ -1,0 +1,23 @@
+body {
+  margin: 0;
+  background: rgb(197, 184, 147);
+  color: white;
+  font-family: roboto, arial, sans-serif;
+}
+
+#welcomePost {
+  flex-direction: row;
+  opacity: 0;
+  margin: 20px 0 80px 0;
+  font-size: 40px;
+}
+
+.flex {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  padding-top: 300px;
+}
